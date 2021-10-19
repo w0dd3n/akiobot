@@ -7,9 +7,9 @@
 ### appLogger provides logs for development purpose
 ### eventLogger provides logs for user activities
 ###
-### To use 'from logger import appLogger/eventLogger'
+### To use 'from botLogger import CBotAppLogger or CBotEventLogger'
 ###
-### @LICENCE= CC BY NC 2021
+### @LICENCE= CC BY NC 2021 
 ###
 ### @DOCS - https://docs.python.org/3/howto/logging.html
 ### @DOCS - https://docs.python.org/3.8/howto/logging-cookbook.html#logging-cookbook
@@ -18,6 +18,17 @@
 
 ### Import Standard Modules
 import logging
+
+### Define constants for configuration purpose
+LOG_NAME_EVENT      = "__logger_event__"
+LOG_NAME_APP        = "__logger_app__"
+LOG_LEVEL_EVENT     = logging.DEBUG
+LOG_LEVEL_APP       = logging.DEBUG
+LOG_FILE_EVENT      = "../logs/events.log"
+LOG_FILE_APP        = "../logs/app.log"
+LOG_FORMAT_EVENT    = "[%(levelname)8s] <%(asctime)s> - %(message)s"
+LOG_FORMAT_APP      = "[%(levelname)8s] <%(asctime)s> - %(message)s"
+
 
 class SingletonType(type):
     _instances = {}
@@ -33,13 +44,10 @@ class SingletonType(type):
 ###
 class CBotAppLogger(metaclass=SingletonType):
     __instance      = None
-    __name          = "__logger_event__"
-    __level         = logging.DEBUG
-    __filepath      = "../logs/app.log"
-    __format        = "[%(levelname)8s] <%(asctime)s> %(filename)s:%(lineno)d - %(message)s"
-    __logHandler    = None
-    __logFormater   = None
-    __logger        = None
+    __name          = LOG_NAME_APP
+    __level         = LOG_LEVEL_APP
+    __filepath      = LOG_FILE_APP
+    __format        = LOG_FORMAT_APP
 
     def __init__(self) -> None:
         if CBotAppLogger.__instance != None:
@@ -85,10 +93,10 @@ class CBotAppLogger(metaclass=SingletonType):
 
 class CBotEventLogger(metaclass=SingletonType):
     __instance  = None
-    __name      = "__logger_event__"
-    __level     = logging.DEBUG
-    __filepath  = "../logs/events.log"
-    __format    = "[%(levelname)8s] <%(asctime)s> - %(message)s"
+    __name      = LOG_NAME_EVENT
+    __level     = LOG_LEVEL_EVENT
+    __filepath  = LOG_FILE_EVENT
+    __format    = LOG_FORMAT_EVENT
 
     def __init__(self) -> None:
         if CBotEventLogger.__instance != None:
