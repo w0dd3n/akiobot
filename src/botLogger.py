@@ -35,7 +35,7 @@ class CBotAppLogger(metaclass=SingletonType):
     __instance      = None
     __name          = "__logger_event__"
     __level         = logging.DEBUG
-    __filepath      = "./logs/app.log"
+    __filepath      = "../logs/app.log"
     __format        = "[%(levelname)8s] <%(asctime)s> %(filename)s:%(lineno)d - %(message)s"
     __logHandler    = None
     __logFormater   = None
@@ -87,7 +87,7 @@ class CBotEventLogger(metaclass=SingletonType):
     __instance  = None
     __name      = "__logger_event__"
     __level     = logging.DEBUG
-    __filepath  = "./logs/events.log"
+    __filepath  = "../logs/events.log"
     __format    = "[%(levelname)8s] <%(asctime)s> - %(message)s"
 
     def __init__(self) -> None:
@@ -139,11 +139,11 @@ if __name__ == "__main__":
     CBotEventLogger().error("Test EVENT log")
     CBotEventLogger().critical("Test EVENT log")
 
-    CBotAppLogger().info("Test EVENT log")
-    CBotAppLogger().debug("Test EVENT log")
-    CBotAppLogger().warning("Test EVENT log")
-    CBotAppLogger().error("Test EVENT log")
-    CBotAppLogger().critical("Test EVENT log")
+    CBotAppLogger().info("Test APP log")
+    CBotAppLogger().debug("Test APP log")
+    CBotAppLogger().warning("Test APP log")
+    CBotAppLogger().error("Test APP log")
+    CBotAppLogger().critical("Test APP log")
 
 
 ### EOF ###
